@@ -32,6 +32,14 @@ quiz_aberto:
   - '&6  Utilize o comando /quiz responder (resposta)'
   - '&6  para responder.'
   - ''
+anuncios_automaticos:
+  - ''
+  - '&6[Quiz] &eEvento aberto!'
+  - '&6[Quiz] &ePergunta: {pergunta}'
+  - '&6[Quiz] &ePara responder utilize o comando'
+  - '&6[Quiz] &e/quiz responder (sua resposta)'
+  - '&6[Quiz] &eChamados restantes: {chamados}'
+  - ''
 quiz_fechado: '&cNão há nenhum quiz aberto no momento. Utilize /quiz help para mais informações.'
 ajuda_player:
   - ''
@@ -74,6 +82,10 @@ finalizado:
   - ''
   - '&6[Quiz] &eGanhador: {ganhador}'
   - '&6[Quiz] &eResposta: {resposta}'
+  - ''
+cancelado_part:
+  - ''
+  - '&6[Quiz] Ninguém acertou a resposta e o evento foi cancelado.'
   - ''
 title_finalizado:
   title: '&6[Quiz]'

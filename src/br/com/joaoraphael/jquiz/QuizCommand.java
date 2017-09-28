@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.scheduler.BukkitScheduler;
 
 
 public class QuizCommand implements CommandExecutor {
@@ -20,7 +21,7 @@ public class QuizCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage("§cApenas jogadores podem executar esse comando.");
+			sender.sendMessage("Â§cApenas jogadores podem executar esse comando.");
 		}else if (sender instanceof Player){
 			
 			Player p = (Player)sender;
@@ -33,52 +34,52 @@ public class QuizCommand implements CommandExecutor {
 					if (args.length == 0) {
 						if (!c.getConfig().getString("pergunta").equalsIgnoreCase("padrao-a")) {
 							for (String msg : c.getConfig().getStringList("quiz_aberto")) {
-								p.sendMessage(msg.replace("&", "§").replace("{pergunta}", c.getConfig().getString("pergunta")));
+								p.sendMessage(msg.replace("&", "Â§").replace("{pergunta}", c.getConfig().getString("pergunta")));
 							}
 						}else {
-							p.sendMessage(c.getConfig().getString("quiz_fechado").replace("&", "§"));
+							p.sendMessage(c.getConfig().getString("quiz_fechado").replace("&", "Â§"));
 						}
 					}
 					if (args.length == 1) {
 						if (args[0].equalsIgnoreCase("help")) {
 							if (p.hasPermission(permp) && !(p.hasPermission(perma))) {
 								for (String help : c.getConfig().getStringList("ajuda_player")) {
-									p.sendMessage(help.replace("&", "§"));
+									p.sendMessage(help.replace("&", "Â§"));
 								}
 								}else if (p.hasPermission(perma)) {
 									for (String help : c.getConfig().getStringList("ajuda_admin")) {
-										p.sendMessage(help.replace("&", "§"));
+										p.sendMessage(help.replace("&", "Â§"));
 									}
 									
 								}
 							}
 						
 						if (args[0].equalsIgnoreCase("dev")) {
-							p.sendMessage("§6jQuiz - Plugin");
-							p.sendMessage("§e Desenvolvido por: Jaao");
-							p.sendMessage("§e Twitter: twitter.com/_jaoraphael");
+							p.sendMessage("Â§6jQuiz - Plugin");
+							p.sendMessage("Â§eDesenvolvido por: Jaao");
+							p.sendMessage("Â§eTwitter: twitter.com/_jaoraphael");
 							
 						}
 						if (args[0].equalsIgnoreCase("iniciar")) {
 							if (p.hasPermission(perma)) {
 								if (c.getConfig().getBoolean("aberto") == true) {
-									p.sendMessage(c.getConfig().getString("ja_aberto").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("ja_aberto").replace("&", "Â§"));
 								}else {
-									p.sendMessage("§cUso: /quiz iniciar (pergunta)");
+									p.sendMessage("Â§cUso: /quiz iniciar (pergunta)");
 								}
 							}else {
-								p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+								p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 							}
 						}
 						if (args[0].equalsIgnoreCase("resposta")) {
 							if (p.hasPermission(perma)) {
 								if (!c.getConfig().getString("pergunta").equalsIgnoreCase("padrao-a")) {
-									p.sendMessage("§cUso: /quiz resposta (resposta)");
+									p.sendMessage("Â§cUso: /quiz resposta (resposta)");
 								}else {
-									p.sendMessage(c.getConfig().getString("ja_def_resposta").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("ja_def_resposta").replace("&", "Â§"));
 								}
 							}else {
-								p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+								p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 							}
 						}
 						if (args[0].equalsIgnoreCase("cancelar")) {
@@ -92,26 +93,26 @@ public class QuizCommand implements CommandExecutor {
 									for (String cancelado : c.getConfig().getStringList("cancelado")) {
 										for (Player all : Bukkit.getOnlinePlayers()) {
 											if (all.hasPermission(permp) || all.hasPermission(perma)) {
-												all.sendMessage(cancelado.replace("&", "§"));
+												all.sendMessage(cancelado.replace("&", "Â§"));
 											}
 										}
 									}
-									p.sendMessage(c.getConfig().getString("cancelado").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("cancelado").replace("&", "Â§"));
 								}else {
-									p.sendMessage(c.getConfig().getString("cancelado_fechado").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("cancelado_fechado").replace("&", "Â§"));
 								}
 							}else {
-								p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+								p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 							}
 						}
 						if (args[0].equalsIgnoreCase("responder")) {
 							if (p.hasPermission(perma)) {
-								p.sendMessage(c.getConfig().getString("admin_nresp").replace("&", "§"));
+								p.sendMessage(c.getConfig().getString("admin_nresp").replace("&", "Â§"));
 							}else {
 								if (c.getConfig().getBoolean("aberto") == false) {
-									p.sendMessage(c.getConfig().getString("fechado_resp").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("fechado_resp").replace("&", "Â§"));
 								}else {
-									p.sendMessage("§cUso: /quiz responder (resposta)");
+									p.sendMessage("Â§cUso: /quiz responder (resposta)");
 								}
 							}
 						}
@@ -127,13 +128,13 @@ public class QuizCommand implements CommandExecutor {
 			                        perg = ChatColor.translateAlternateColorCodes('&', perg);
 			                        c.getConfig().set("pergunta", perg);
 			                        c.saveConfig();
-			                        p.sendMessage("§ePergunta: §e" + c.getConfig().getString("pergunta").replace("&", "§"));
-			                        p.sendMessage(c.getConfig().getString("def_resposta").replace("&", "§"));
+			                        p.sendMessage("Â§ePergunta: Â§e" + c.getConfig().getString("pergunta").replace("&", "Â§"));
+			                        p.sendMessage(c.getConfig().getString("def_resposta").replace("&", "Â§"));
 								}else {
-									p.sendMessage(c.getConfig().getString("ja_aberto").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("ja_aberto").replace("&", "Â§"));
 								}
 							}else {
-								p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+								p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 							}
 						}
 						if (args[0].equalsIgnoreCase("resposta")) {
@@ -146,27 +147,28 @@ public class QuizCommand implements CommandExecutor {
 			                        c.getConfig().set("resposta", resp);
 			                        c.getConfig().set("aberto", true);
 			                        c.saveConfig();
-			                        p.sendMessage(c.getConfig().getString("resp_def").replace("&", "§").replace("{resposta}", c.getConfig().getString("resposta")));
+			                        announcementQuiz();
+			                        p.sendMessage(c.getConfig().getString("resp_def").replace("&", "Â§").replace("{resposta}", c.getConfig().getString("resposta")));
 			                        for (String msg : c.getConfig().getStringList("iniciado")) {
 			                        	for (Player all : Bukkit.getOnlinePlayers()) {
 			                        		if (all.hasPermission(permp) || all.hasPermission(perma)) {
-			                        			all.sendMessage(msg.replace("&", "§").replace("{pergunta}", c.getConfig().getString("pergunta").replace("&", "§")));
+			                        			all.sendMessage(msg.replace("&", "Â§").replace("{pergunta}", c.getConfig().getString("pergunta").replace("&", "Â§")));
 			                        		}
 			                        	}
 			                        }
 								}else {
-									p.sendMessage(c.getConfig().getString("naoha_pergunta").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("naoha_pergunta").replace("&", "Â§"));
 								}
 							}else {
-								p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+								p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 							}
 						}
 						if (args[0].equalsIgnoreCase("responder")) {
 							if (p.hasPermission(perma)) {
-								p.sendMessage(c.getConfig().getString("admin_nresp").replace("&", "§"));
+								p.sendMessage(c.getConfig().getString("admin_nresp").replace("&", "Â§"));
 							}else {
 								if (c.getConfig().getBoolean("aberto") == false) {
-									p.sendMessage(c.getConfig().getString("fechado_resp").replace("&", "§"));
+									p.sendMessage(c.getConfig().getString("fechado_resp").replace("&", "Â§"));
 								}else {
 									String sresp = "";
 			                        for (int c = 1;c < args.length; c++){
@@ -177,7 +179,7 @@ public class QuizCommand implements CommandExecutor {
 			                        		for (String msg : c.getConfig().getStringList("finalizado")) {
 				        						for (Player all : Bukkit.getOnlinePlayers()) {
 				        							if (all.hasPermission(permp) || all.hasPermission(perma)) {
-				        								all.sendMessage(msg.replace("&", "§").replace("{resposta}", c.getConfig().getString("resposta")).replace("{ganhador}", p.getName()));
+				        								all.sendMessage(msg.replace("&", "Â§").replace("{resposta}", c.getConfig().getString("resposta")).replace("{ganhador}", p.getName()));
 				        							}
 				        						}
 				        					}
@@ -186,7 +188,7 @@ public class QuizCommand implements CommandExecutor {
 			                        	if (c.getConfig().getBoolean("title") == true) {
 			                        		for (Player all : Bukkit.getOnlinePlayers()) {
 			                        			if (all.hasPermission(permp) || all.hasPermission(perma)) {
-			                        				Title.sendFullTitle(all, 40, 120, 60, c.getConfig().getString("title_finalizado.title").replace("&", "§").replace("{player}", p.getName()), c.getConfig().getString("title_finalizado.subtitle").replace("&", "§").replace("{player}", p.getName()));
+			                        				Title.sendFullTitle(all, 40, 120, 60, c.getConfig().getString("title_finalizado.title").replace("&", "Â§").replace("{player}", p.getName()), c.getConfig().getString("title_finalizado.subtitle").replace("&", "Â§").replace("{player}", p.getName()));
 			                        			}
 			                        		}
 			                        	}
@@ -205,12 +207,12 @@ public class QuizCommand implements CommandExecutor {
 			                        	
 			                        	if (c.getConfig().getBoolean("money") == true) {
 			                        		if (c.getConfig().getDouble("money_quantidade") <= 0) {
-			                        			Bukkit.getConsoleSender().sendMessage("§c[jQuiz] Não é possível dar valores negativos para jogadores, altere a quantidade na config.");
-			                        			p.sendMessage("§cUm erro ocorreu ao depositar o prêmio em sua conta, entre em contato com a administração do servidor.");
+			                        			Bukkit.getConsoleSender().sendMessage("Â§c[jQuiz] NÃ£o Ã© possÃ­vel dar valores negativos para os jogadores, altere a quantidade na config. Player: " + p.getName());
+			                        			p.sendMessage("Â§cUm erro ocorreu ao depositar o prÃªmio em sua conta, entre em contato com a administraÃ§Ã£o do servidor.");
 			                        		}else {
 			                        			double quantia = c.getConfig().getDouble("money_quantidade");
 			                        			c.econ.depositPlayer(p.getName(), c.getConfig().getDouble("money_quantidade"));
-			                        			p.sendMessage(c.getConfig().getString("premio_depos").replace("&", "§").replace("{quantia}", Double.toString(quantia)));
+			                        			p.sendMessage(c.getConfig().getString("premio_depos").replace("&", "Â§").replace("{quantia}", Double.toString(quantia)));
 			                        		}
 			                        	}
 			                        	
@@ -219,17 +221,55 @@ public class QuizCommand implements CommandExecutor {
 			        					c.getConfig().set("aberto", false);
 			        					c.saveConfig();
 			                        }else {
-			                        	p.sendMessage(c.getConfig().getString("resp_erro").replace("&", "§"));
+			                        	p.sendMessage(c.getConfig().getString("resp_erro").replace("&", "Â§"));
 			                        }
 								}
 							}
 						}
 					}
 					}else {
-						p.sendMessage("§cVocê não tem permissão para executar esse comando.");
+						p.sendMessage("Â§cVocÃª nÃ£o tem permissÃ£o para executar esse comando.");
 					}
 				}
 		}
 		return false;
+	}
+	
+	int vezes = 0;
+	
+	@SuppressWarnings("deprecation")
+	public void announcementQuiz() {
+		BukkitScheduler announcement = Bukkit.getServer().getScheduler();
+		announcement.scheduleAsyncRepeatingTask(c, new Runnable() {
+			@Override
+			public void run() {
+				
+				vezes++;
+				if (vezes < 11) {
+					if (c.getConfig().getBoolean("aberto") == true) {
+						for (String msg : c.getConfig().getStringList("anuncios_automaticos")) {
+							for (Player all : Bukkit.getOnlinePlayers()) {
+								all.sendMessage(msg.replace("&", "Â§").replace("{pergunta}", c.getConfig().getString("pergunta")).replace("{chamados}", Integer.toString(11-vezes)));
+							}
+						}
+					}
+				}else {
+					if (c.getConfig().getBoolean("aberto") == true) {
+						c.getConfig().set("aberto", false);
+						c.getConfig().set("resposta", "padrao-a");
+						c.getConfig().set("pergunta", "padrao-a");
+						c.saveConfig();
+						
+						for (String msg : c.getConfig().getStringList("cancelado_part")) {
+							for (Player all : Bukkit.getOnlinePlayers()) {
+								all.sendMessage(msg.replace("&", "Â§"));
+							}
+						}
+					}
+				}
+				
+			}
+		}, 20 * 20L, 30 * 20L);
+		
 	}
 }
