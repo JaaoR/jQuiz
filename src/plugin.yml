@@ -1,0 +1,6 @@
+main: br.com.joaoraphael.jquiz.Main
+name: jQuiz
+version: 1.0
+commands:
+  quiz:
+    aliases: [jquiz]
