@@ -29,7 +29,8 @@ quiz_aberto:
   - ''
   - '&6  Há um quiz aberto no momento.'
   - '&6  Pergunta: &e{pergunta}'
-  - '&6  Escreva no chat para responder.'
+  - '&6  Utilize o comando /quiz responder (resposta)'
+  - '&6  para responder.'
   - ''
 quiz_fechado: '&cNão há nenhum quiz aberto no momento. Utilize /quiz help para mais informações.'
 ajuda_player:

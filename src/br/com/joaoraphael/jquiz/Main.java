@@ -7,8 +7,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import br.com.devpaulo.legendchat.api.Legendchat;
-import br.com.devpaulo.legendchat.channels.ChannelManager;
 import net.milkbowl.vault.economy.Economy;
 
 public class Main extends JavaPlugin{
@@ -18,8 +16,6 @@ public class Main extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
-		@SuppressWarnings("unused")
-		ChannelManager channelManager = Legendchat.getChannelManager();
 		if (!new File(getDataFolder(), "config.yml").exists()) {
 			saveDefaultConfig();
 			s.sendMessage("§a[jQuiz] Config criada com sucesso.");
