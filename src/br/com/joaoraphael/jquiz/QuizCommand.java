@@ -41,6 +41,14 @@ public class QuizCommand implements CommandExecutor {
 						}
 					}
 					if (args.length == 1) {
+						
+						if (args[0].equalsIgnoreCase("reload")) {
+							if (p.hasPermission(perma)) {
+								c.reloadConfig();
+								p.sendMessage(c.getConfig().getString("configuracao_recarregada").replaceFirst("&", "§"));
+								}
+						}
+						
 						if (args[0].equalsIgnoreCase("help")) {
 							if (p.hasPermission(permp) && !(p.hasPermission(perma))) {
 								for (String help : c.getConfig().getStringList("ajuda_player")) {
@@ -212,6 +220,7 @@ public class QuizCommand implements CommandExecutor {
 			                        		}else {
 			                        			double quantia = c.getConfig().getDouble("money_quantidade");
 			                        			c.econ.depositPlayer(p.getName(), c.getConfig().getDouble("money_quantidade"));
+			                        			
 			                        			p.sendMessage(c.getConfig().getString("premio_depos").replace("&", "§").replace("{quantia}", Double.toString(quantia)));
 			                        		}
 			                        	}

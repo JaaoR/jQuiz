@@ -2,19 +2,19 @@
 # Desenvolvido por: Jaao
 # Twitter: @_jaoraphael
 
-# Permissıes
-# jquiz.player | Permissıes de player
-# jquiz.admin | Permissıes de player + permissıes de admin
+# Permiss√µes
+# jquiz.player | Permiss√µes de player
+# jquiz.admin | Permiss√µes de player + permiss√µes de admin
 
 
 # Quiz
-# Aqui s„o salvas as informaÁıes sobre o quiz atual, n„o altere para que n„o haja erros.
+# Aqui s√£o salvas as informa√ß√µes sobre o quiz atual, n√£o altere para que n√£o haja erros.
 
 aberto: false
 pergunta: 'padrao-a'
 resposta: 'padrao-a'
 
-# OpÁıes
+# Op√ß√µes
 
 firework: true
 title: true
@@ -25,9 +25,10 @@ money_quantidade: 3000
 
 # Mensagens
 
+configuracao_recarregada: "&a[jQuiz] Configura√ß√£o recarregada."
 quiz_aberto:
   - ''
-  - '&6  H· um quiz aberto no momento.'
+  - '&6  H√° um quiz aberto no momento.'
   - '&6  Pergunta: &e{pergunta}'
   - '&6  Utilize o comando /quiz responder (resposta)'
   - '&6  para responder.'
@@ -40,18 +41,18 @@ anuncios_automaticos:
   - '&6[Quiz] &e/quiz responder (sua resposta)'
   - '&6[Quiz] &eChamados restantes: {chamados}'
   - ''
-quiz_fechado: '&cN„o h· nenhum quiz aberto no momento. Utilize /quiz help para mais informaÁıes.'
+quiz_fechado: '&cN√£o h√° nenhum quiz aberto no momento. Utilize /quiz help para mais informa√ß√µes.'
 ajuda_player:
   - ''
-  - '&6Quiz È o nome de um jogo de question·rios que tem como objetivo fazer uma avaliaÁ„o dos conhecimentos sobre determinado assunto. Neste tipo de jogo podem participar tanto grupo de muitas pessoas, como participantes individuais, que devem acertar a maior quantidade de respostas para ganhar.'
+  - '&6Quiz √© o nome de um jogo de question√°rios que tem como objetivo fazer uma avalia√ß√£o dos conhecimentos sobre determinado assunto. Neste tipo de jogo podem participar tanto grupo de muitas pessoas, como participantes individuais, que devem acertar a maior quantidade de respostas para ganhar.'
   - ''
-  - '&eNa modificaÁ„o feita para o nosso servidor o Quiz È um evento que pode ser iniciado a qualquer momento pela staff e o player que responder primeiro corretamente a pergunta, ganha uma quantia de money.'
+  - '&eNa modifica√ß√£o feita para o nosso servidor o Quiz √© um evento que pode ser iniciado a qualquer momento pela staff e o player que responder primeiro corretamente a pergunta, ganha uma quantia de money.'
   - ''
 ajuda_admin:
   - ''
   - '&6&lComandos'
   - '&e -/quiz help * Ajuda do plugin'
-  - '&e -/quiz dev * InformaÁıes sobre o plugin'
+  - '&e -/quiz dev * Informa√ß√µes sobre o plugin'
   - '&e -/quiz iniciar (pergunta) * Inicia o quiz'
   - '&e -/quiz resposta (resposta) * Define a resposta'
   - '&e -/quiz cancelar * Cancela o quiz'
@@ -61,14 +62,14 @@ cancelado:
   - '&6[Quiz] &eEvento cancelado!'
   - ''
 cancelado: '&cQuiz cancelado com sucesso!'
-cancelado_fechado: '&cN„o h· nenhum quiz aberto no momento.'
-ja_aberto: '&cJ· h· um quiz aberto, cancele-o ou aguarde o tÈrmino para iniciar outro.'
-def_resposta: '&eAgora È necess·rio definir uma resposta, utilize o comando &6/quiz resposta (resposta)&e.'
-ja_def_resposta: '&cA resposta j· foi definida.'
-naoha_pergunta: '&c… necess·rio definir uma pergunta primeiro.'
+cancelado_fechado: '&cN√£o h√° nenhum quiz aberto no momento.'
+ja_aberto: '&cJ√° h√° um quiz aberto, cancele-o ou aguarde o t√©rmino para iniciar outro.'
+def_resposta: '&eAgora √© necess√°rio definir uma resposta, utilize o comando &6/quiz resposta (resposta)&e.'
+ja_def_resposta: '&cA resposta j√° foi definida.'
+naoha_pergunta: '&c√â necess√°rio definir uma pergunta primeiro.'
 resp_def: '&eResposta definidada para: &7{resposta}'
-admin_nresp: '&cAdministradores n„o podem responder perguntas do quiz.'
-fechado_resp: '&cN„o h· nenhum quiz aberto no momento.'
+admin_nresp: '&cAdministradores n√£o podem responder perguntas do quiz.'
+fechado_resp: '&cN√£o h√° nenhum quiz aberto no momento.'
 resp_erro: '&cResposta errada! Tente novamente.'
 premio_depos: '&a{quantia}c foram adicionados a sua conta.'
 iniciado: 
@@ -85,7 +86,7 @@ finalizado:
   - ''
 cancelado_part:
   - ''
-  - '&6[Quiz] NinguÈm acertou a resposta e o evento foi cancelado.'
+  - '&6[Quiz] Ningu√©m acertou a resposta e o evento foi cancelado.'
   - ''
 title_finalizado:
   title: '&6[Quiz]'

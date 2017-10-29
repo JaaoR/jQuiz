@@ -30,13 +30,11 @@ public class Main extends JavaPlugin {
         	sendMessages('a');
         }
 		getCommand("quiz").setExecutor(new QuizCommand());
-		cancelarQuiz();
 	}
 	
 	@Override
 	public void onDisable() {
 		sendMessages('c');
-		cancelarQuiz();
 	}
 	
 	private boolean setupEconomy() {
@@ -62,12 +60,5 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§" + c + prefixo + " Desenvolvido por: Jaao");
         Bukkit.getConsoleSender().sendMessage("§" + c + prefixo + " Suporte: @_jaoraphael");
     }
-	
-	public void cancelarQuiz() {
-		getConfig().set("aberto", false);
-		getConfig().set("resposta", "padrao-a");
-		getConfig().set("pergunta", "padrao-a");
-		saveConfig();
-	}
 
 }
